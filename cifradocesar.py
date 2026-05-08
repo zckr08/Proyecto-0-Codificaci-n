@@ -151,3 +151,69 @@ def decodificarProblema3(texto, palabra):
 ###############################################################################
 #      Problema #3 resuelto                                                   #
 ###############################################################################
+
+def codificarProblema5(texto):
+    textoCodificado = ""
+    if len(texto) % 4 != 0:
+        texto = texto+" "*(4-(len(texto)%4))
+    texto = texto.replace(" ", "-")
+    texto = list(texto)
+    for caracter in texto[0::4]:
+        textoCodificado = textoCodificado+caracter
+    for caracter in texto[1::2]:
+        textoCodificado = textoCodificado+caracter
+    for caracter in texto[2::4]:
+        textoCodificado = textoCodificado+caracter
+    docker1 = list(textoCodificado)
+    docker2 = []
+    while docker1 != []:
+        for i in range(0,5):
+            if docker1 != []:
+                docker2.append(docker1.pop(0))
+        if docker1 != []:
+            docker2.append(" ")
+    textoCodificado = ""
+    for i in docker2:
+        textoCodificado = textoCodificado+i         
+    return textoCodificado
+    
+def decodificarProblema5(texto):
+    textoDecodificado = ""
+    fila1 = []
+    fila2 = []
+    fila3 = []
+    docker1 = list(texto)
+    docker2 = []
+    while docker1 != []:
+        for i in range(0,5):
+            if docker1 != []:
+                docker2.append(docker1.pop(0))
+        if docker1 != []:
+            docker1.remove(" ")
+    texto = ""
+    for i in docker2:
+        texto = texto+i
+    texto = list(texto)
+    for caracter in texto[0:int((len(texto)/4)):]:
+        fila1.append(caracter)
+    for caracter in texto[int((len(texto)/4)):int((len(texto)/4)*3):]:
+        fila2.append(caracter)
+    for caracter in texto[int((len(texto)/4)*3)::]:
+        fila3.append(caracter)
+    while fila2 != []:
+        textoDecodificado = textoDecodificado + fila1.pop(0)
+        textoDecodificado = textoDecodificado + fila2.pop(0)
+        textoDecodificado = textoDecodificado + fila3.pop(0)
+        textoDecodificado = textoDecodificado + fila2.pop(0) 
+    textoDecodificado = textoDecodificado.replace("-", " ")
+    docker1 = list(textoDecodificado)
+    while docker1[-1] == " ":
+        docker1.pop(-1)
+    textoDecodificado = ""
+    for i in docker1:
+        textoDecodificado = textoDecodificado+i
+    print(textoDecodificado)
+
+###############################################################################
+#      Problema #5 resuelto                                                   #
+###############################################################################
