@@ -1,3 +1,4 @@
+#Prueba
 def validarTexto(texto):
     """Esta es una función booleana que va a recibir un texto y va a verificar si contiene
        únicamente letras y espacios.
