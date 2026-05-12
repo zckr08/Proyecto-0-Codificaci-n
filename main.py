@@ -105,6 +105,7 @@ def main():
             print("Error:", e)
     print("Gracias por usar el programa, hasta luego!")
 
-
+if __name__ == '__main__':
+    main()
 
 main()
