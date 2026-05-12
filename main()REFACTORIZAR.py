@@ -144,7 +144,7 @@ def validarTexto(texto):
 #      Funciones que se repiten                                               #
 ###############################################################################
 
-def codificarProblema1(texto, desplazamiento):
+def cesarCod(texto, desplazamiento):
     """Esta función es la encargada de realizar la codificación tipo Cesar a partir de un texto y un desplazamiento
        Entradas: Texto = String que solo contenga letras y espacios.
                  Desplazamiento = Int 
@@ -164,7 +164,7 @@ def codificarProblema1(texto, desplazamiento):
             textoNuevo += alfabeto[posicion]
     return textoCodificado
 
-def decodificarProblema1(texto, desplazamiento):
+def cesarDec(texto, desplazamiento):
     """Esta función es la encargada de realizar la decodificación tipo Cesar a partir de un texto y un desplazamiento
        Entradas: Texto = String que solo contenga letras y espacios.
                  Desplazamiento = Int 
@@ -590,4 +590,4 @@ def escitalaDec(textoCod, V):
     textoDeC = textoDeC.strip()
     return textoDeC
 
-main()
+print(escitalaCod("Tranquilos todo va a estar más o menos bien", 4))
