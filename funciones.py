@@ -28,7 +28,26 @@ def prepararTexto(texto):
     texto = texto.replace("ó", "o")
     texto = texto.replace("ú", "u")
     texto = texto.replace("ü", "u")
-    return texto
+    textoFinal = ""
+    for caracteres in texto:
+        if caracteres in "abcdefghijklmnñopqrstuvwxyz ":
+            textoFinal = textoFinal+caracteres
+    return textoFinal
+
+def prepararTexto2(texto):
+    """Esta función va a preparar texto para que puedan ser procesados correctamente para las funciones Rail Fence y Escítala.
+       Entradas: texto = string
+       Salidas: texto preparado = string
+       Restricciones: texto debe ser un string
+    """
+    textoFinal = ""
+    abecedario = "áabcdéefghíijklmnñóopqrstúuüvwxyz "
+    for caracteres in texto:
+        if caracteres in abecedario or caracteres in abecedario.upper():
+            textoFinal = textoFinal+caracteres
+    return textoFinal
+
+print(prepararTexto2("ESTE es 87989un pingüino"))
 
 def validarTexto(texto):
     """Esta es una función booleana que va a recibir un texto y va a verificar si contiene
@@ -452,6 +471,7 @@ def railfenceCod(texto):
        """
     if type(texto) != str:
         raise Exception("Error: Debe ingresar un string.")
+    texto = prepararTexto2(texto)
     textoCodificado = ""
     if len(texto) % 4 != 0:
         texto = texto+" "*(4-(len(texto)%4))
@@ -484,6 +504,7 @@ def railfenceDec(texto):
     """
     if type(texto) != str:
         raise Exception("Error: Debe ingresar un string.")
+    texto = prepararTexto2(texto)
     textoDecodificado = ""
     fila1 = []
     fila2 = []
@@ -531,6 +552,7 @@ def escitalaCod(texto, V):
         raise Exception("Error: Debe ingresar un string.")
     if type(V) != int or V < 1:
         raise Exception("Error: Debe ingresar un número entero positivo")
+    texto = prepararTexto2(texto)
     textoCod=""
     if len(texto) % V != 0:
         texto = texto + " " * (V - (len(texto) % V))
@@ -557,6 +579,7 @@ def escitalaDec(textoCod, V):
         raise Exception("Error: Debe ingresar un string.")
     if type(V) != int or V < 1:
         raise Exception("Error: Debe ingresar un número entero positivo")
+    texto = prepararTexto2(texto)
     texto = textoCod.replace(" ", "")
     filas = len(texto) // V
     resultado = [""] * len(texto)
