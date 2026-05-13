@@ -68,7 +68,7 @@ def nuevoAbecedario(palabra):
        Salidas: una lista con el alfabeto original y el alfabeto modificado.
        Restricciones: palabra debe de ser un string que solo contenga espacios o letras.
     """
-    if validarPalabra(palabra) != True or type(palabra) != str:
+    if not validarPalabra(palabra) or type(palabra) != str:
         raise Exception("Error: La palabra clave solo debe contener letras.")
     palabra = prepararTexto(palabra)
     alfabeto = list("abcdefghijklmnñopqrstuvwxyz")
@@ -267,7 +267,7 @@ def cesarCod(texto, desplazamiento):
        Restricciones: Texto solo puede contener letras y espacios
                       Desplazamiento debe de ser un valor entero
     """
-    if validarTexto(texto) != True or type(texto) != str:
+    if not validarTexto(texto) or type(texto) != str:
         raise Exception("Error: El texto solo debe contener letras y espacios.")
     if type(desplazamiento) != int:
         raise Exception("Error: El valor del desplazamiento tiene que ser un número entero.") 
@@ -290,7 +290,7 @@ def cesarDec(texto, desplazamiento):
        Restricciones: Texto solo puede contener letras y espacios
                       Desplazamiento debe de ser un valor entero
     """
-    if validarTexto(texto) != True or type(texto) != str:
+    if not validarTexto(texto) or type(texto) != str:
         raise Exception("Error: El texto solo debe contener letras y espacios.")
     if type(desplazamiento) != int:
         raise Exception("Error: El valor del desplazamiento tiene que ser un número entero.") 
@@ -314,9 +314,9 @@ def monoCod(texto, palabra):
        Restricciones: texto debe ser un string unicamente con letras y espacios.
                       palabra debe ser un string unicamente con letras.  
     """
-    if validarTexto(texto) != True or type(texto) != str:
+    if not validarTexto(texto) or type(texto) != str:
         raise Exception("Error: El texto solo debe contener letras y espacios.")
-    if validarPalabra(palabra) != True or type(palabra) != str:
+    if not validarPalabra(palabra) or type(palabra) != str:
         raise Exception("Error: La palabra clave solo debe contener letras.")
     alfabeto = nuevoAbecedario(palabra)[0]
     alfabetoNuevo = nuevoAbecedario(palabra)[1]
@@ -337,9 +337,9 @@ def monoDec(texto, palabra):
        Restricciones: texto debe ser un string unicamente con letras y espacios.
                       palabra debe ser un string unicamente con letras.  
     """
-    if validarTexto(texto) != True or type(texto) != str:
+    if not validarTexto(texto) or type(texto) != str:
         raise Exception("Error: El texto solo debe contener letras y espacios.")
-    if validarPalabra(palabra) != True or type(palabra) != str:
+    if not validarPalabra(palabra) or type(palabra) != str:
         raise Exception("Error: La palabra clave solo debe contener letras.")
     alfabeto = nuevoAbecedario(palabra)[0]
     alfabetoNuevo = nuevoAbecedario(palabra)[1]
@@ -360,9 +360,9 @@ def vigenereCod(texto, palabra):
        Restricciones: texto debe ser un string unicamente con letras y espacios.
                       palabra debe ser un string unicamente con letras.  
     """
-    if validarTexto(texto) != True or type(texto) != str:
+    if not validarTexto(texto) or type(texto) != str:
         raise Exception("Error: Debe ingresar un texot válida que solo contenga letras y espacios.")
-    if validarPalabra(palabra) != True or type(texto) != str:
+    if not validarPalabra(palabra) or type(texto) != str:
         raise Exception("Error: Debe ingresar una palabra válida que solo contenga letras.")
     alfabeto = list("abcdefghijklmnñopqrstuvwxyz")
     palabra = prepararTexto(palabra)
@@ -386,9 +386,9 @@ def vigenereDec(texto, palabra):
        Restricciones: texto debe ser un string unicamente con letras y espacios.
                       palabra debe ser un string unicamente con letras.  
     """
-    if validarTexto(texto) != True:
+    if not validarTexto(texto):
         raise Exception("Error: Debe ingresar un texot válida que solo contenga letras y espacios.")
-    if validarPalabra(palabra) != True:
+    if not validarPalabra(palabra):
         raise Exception("Error: Debe ingresar una palabra válida que solo contenga letras.")
     alfabeto = list("abcdefghijklmnñopqrstuvwxyz")
     palabra = prepararTexto(palabra)
@@ -425,15 +425,13 @@ def PlayFairCod(texto, clave):
         textoCod += " "
     return textoCod.strip()
 
-print(PlayFairCod("guitarras guardadas en el placard", "profundizaste"))
-
 def PlayFairDec(textoCod, clave):
     """
     Esta función se encarga de decodificar un mensaje codifico con PlayFair.
     Entradas: El texto Codificado y la palabra Clave
     Salidas: El texto codificado pasa a ser texto normal.
     Restricciones: TextoCod y clave deben ser str.
-    """     
+    """   
     palabras=textoCod.split()
     textoDec=""
     matriz=matrizPlayFair(clave)
@@ -445,7 +443,6 @@ def PlayFairDec(textoCod, clave):
     textoDec = textoDec.strip()
     return quitarNum(textoDec)
 
-print(PlayFairCod("lpdeduyonc lpduininxe si cj ugclduyi", "profundizaste"))
 
 def railfenceCod(texto):
     """Esta función se va a encargar de codificar un texto siguiendo un patron de zigzag y algunos añadidos.

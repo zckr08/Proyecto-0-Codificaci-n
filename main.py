@@ -10,9 +10,7 @@ def main():
     """
     f.limpiarPantalla()
     print(" ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|\n ______                                          ______ \n| |__| |              ¡BIENVENIDO!              | |__| |\n|  ()  |  CON ESTE PROGRAMA PUEDES CODIFICAR O  |  ()  |\n|______|   DECODIFICAR MENSAJES CON DISTINTOS   |______|\n ______          METODOS DECODIFICACION          ______ \n| |__| |                                        | |__| |\n|  ()  |      CREADO POR JOSE O. Y ZACK R.      |  ()  |\n|______|                                        |______|\n ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|")
-    continuar = input("\n¿Desea usar el programa? 1 = Continuar  2 = Terminar: ")
-    while continuar not in ("1", "2"):
-        continuar = input("La selección debe ser 1 para continuar o 2 para terminar, intente de nuevo: ")
+    continuar = "1"
     while continuar == "1":
         try:
             print("\nElige un método de cifrado:\n1. Cifrado César\n2. Cifrado monoalfabético con palabra clave\n3. Cifrado Vigenère\n4. Cifrado PlayFair modificado\n5. Cifrado Rail Fence\n6. Escítala\n")
@@ -28,11 +26,11 @@ def main():
             if seleccionMetodo == 1:
                 if seleccionOpcion == 1:
                     texto = str(input("Digite el texto que quiere cifrar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, debe contener únicamente letras y espacios. Intente de nuevo: "))
                 elif seleccionOpcion == 2:
                     texto = str(input("Digite el texto que quiere decodificar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, debe contener únicamente letras y espacios. Intente de nuevo: "))
                 desplazamiento = int(input("Digite el desplazamiento: "))
                 if seleccionOpcion == 1:
@@ -45,14 +43,14 @@ def main():
             elif seleccionMetodo == 2:
                 if seleccionOpcion == 1:
                     texto = str(input("Digite el texto que quiere cifrar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 elif seleccionOpcion == 2:
                     texto = str(input("Digite el texto que quiere decodificar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 palabra = str(input("Digite la palabra clave: "))
-                while f.validarPalabra(palabra) == False:
+                while not f.validarPalabra(palabra):
                     palabra = str(input("La palabra clave no es válida, intente de nuevo: "))
                 if seleccionOpcion == 1:
                     textoCod = f.monoCod(texto, palabra)
@@ -64,14 +62,14 @@ def main():
             elif seleccionMetodo == 3:
                 if seleccionOpcion == 1:
                     texto = str(input("Digite el texto que quiere cifrar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 elif seleccionOpcion == 2:
                     texto = str(input("Digite el texto que quiere decodificar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 palabra = str(input("Digite la palabra clave: "))
-                while f.validarPalabra(palabra) == False:
+                while f.validarPalabra(palabra) == 0:
                     palabra = str(input("La palabra clave no es válida, intente de nuevo: "))
                 if seleccionOpcion == 1:
                     textoCod = f.vigenereCod(texto, palabra)
@@ -83,14 +81,14 @@ def main():
             elif seleccionMetodo == 4:
                 if seleccionOpcion == 1:
                     texto = str(input("Digite el texto que quiere cifrar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 elif seleccionOpcion == 2:
                     texto = str(input("Digite el texto que quiere decodificar: "))
-                    while f.validarTexto(texto) == False:
+                    while not f.validarTexto(texto):
                         texto = str(input("El texto no es válido, intente de nuevo: "))
                 palabra = str(input("Digite la palabra clave: "))
-                while f.validarTexto(palabra) == False:
+                while not f.validarPalabra(palabra):
                     palabra = str(input("La palabra clave no es válida, intente de nuevo: "))
                 if seleccionOpcion == 1:
                     textoCod = f.PlayFairCod(texto, palabra)
@@ -128,7 +126,8 @@ def main():
             continuar = input("¿Desea seguir utilizando el programa? 1 = Continuar  2 = Terminar: ")
             while continuar not in ("1", "2"):
                 continuar = input("La selección debe ser 1 para continuar o 2 para terminar, intente de nuevo: ")
-
+        except ValueError:
+            print("Error: Debe ingresar un número válido.")
         except Exception as e:
             print("Error:", e)
 
@@ -137,4 +136,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-main()
