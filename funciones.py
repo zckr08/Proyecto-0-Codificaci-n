@@ -93,6 +93,14 @@ def matrizPlayFair(clave):
     Salidas: Matriz lista para codificar
     Restricciones: Ninguna
     """
+    clave = clave.lower()
+    clave = clave.replace("á", "a")
+    clave = clave.replace("é", "e")
+    clave = clave.replace("í", "i")
+    clave = clave.replace("ó", "o")
+    clave = clave.replace("ú", "u")
+    clave = clave.replace("ü", "u")
+    claveLista = ""
     claveLista = ""
     for letra in clave:
         if letra not in claveLista:
