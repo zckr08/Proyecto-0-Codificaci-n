@@ -47,7 +47,18 @@ def prepararTexto2(texto):
             textoFinal = textoFinal+caracteres
     return textoFinal
 
-print(prepararTexto2("ESTE es 87989un pingüino"))
+def prepararTexto3(texto):
+    """Esta función va a preparar texto para que puedan ser procesados correctamente para las funciones Rail Fence y Escítala.
+       Entradas: texto = string
+       Salidas: texto preparado = string
+       Restricciones: texto debe ser un string
+    """
+    textoFinal = ""
+    abecedario = "áabcdéefghíijklmnñóopqrstúuüvwxyz -"
+    for caracteres in texto:
+        if caracteres in abecedario or caracteres in abecedario.upper():
+            textoFinal = textoFinal+caracteres
+    return textoFinal
 
 def validarTexto(texto):
     """Esta es una función booleana que va a recibir un texto y va a verificar si contiene
@@ -504,7 +515,7 @@ def railfenceDec(texto):
     """
     if type(texto) != str:
         raise Exception("Error: Debe ingresar un string.")
-    texto = prepararTexto2(texto)
+    texto = prepararTexto3(texto)
     textoDecodificado = ""
     fila1 = []
     fila2 = []
@@ -579,8 +590,8 @@ def escitalaDec(textoCod, V):
         raise Exception("Error: Debe ingresar un string.")
     if type(V) != int or V < 1:
         raise Exception("Error: Debe ingresar un número entero positivo")
-    texto = prepararTexto2(texto)
-    texto = textoCod.replace(" ", "")
+    texto = prepararTexto3(textoCod)
+    texto = texto.replace(" ", "")
     filas = len(texto) // V
     resultado = [""] * len(texto)
     idx = 0

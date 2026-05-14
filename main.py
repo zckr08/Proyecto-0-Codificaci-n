@@ -9,12 +9,12 @@ def main():
     Restricciones: Entradas deben str y restricciones cambian dependiendo la función que sea invocada.
     """
     f.limpiarPantalla()
-    print(" ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|\n ______                                          ______ \n| |__| |              ¡BIENVENIDO!              | |__| |\n|  ()  |  CON ESTE PROGRAMA PUEDES CODIFICAR O  |  ()  |\n|______|   DECODIFICAR MENSAJES CON DISTINTOS   |______|\n ______            METODOS DE CIFRADO            ______ \n| |__| |                                        | |__| |\n|  ()  |      CREADO POR JOSE O. Y ZACK R.      |  ()  |\n|______|                                        |______|\n ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|")
     continuar = "1"
     while continuar == "1":
         try:
+            print(" ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|\n ______                                          ______ \n| |__| |              ¡BIENVENIDO!              | |__| |\n|  ()  |  CON ESTE PROGRAMA PUEDES CODIFICAR O  |  ()  |\n|______|   DECODIFICAR MENSAJES CON DISTINTOS   |______|\n ______            METODOS DE CIFRADO            ______ \n| |__| |                                        | |__| |\n|  ()  |      CREADO POR JOSE O. Y ZACK R.      |  ()  |\n|______|                                        |______|\n ______  ______  ______  ______  ______  ______  ______ \n| |__| || |__| || |__| || |__| || |__| || |__| || |__| |\n|  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  ||  ()  |\n|______||______||______||______||______||______||______|")
             print("\nElige un método de cifrado:\n1. Cifrado César\n2. Cifrado monoalfabético con palabra clave\n3. Cifrado Vigenère\n4. Cifrado PlayFair modificado\n5. Cifrado Rail Fence\n6. Escítala\n")
-            seleccionMetodo = input("Para seleccionar elige el número del cifrado (1 a 6): \n")
+            seleccionMetodo = input("Para seleccionar elige el número del cifrado (1 a 6): ")
             while seleccionMetodo not in ("1", "2", "3", "4", "5", "6"):
                 seleccionMetodo = input("La selección debe ser un número entre 1 y 6, intente de nuevo: ")
             seleccionMetodo = int(seleccionMetodo)
@@ -124,6 +124,8 @@ def main():
                     print("El texto decodificado es: " + textoDec)
 
             continuar = input("¿Desea seguir utilizando el programa? 1 = Continuar  2 = Terminar: ")
+            if continuar == "1":
+                f.limpiarPantalla()
             while continuar not in ("1", "2"):
                 continuar = input("La selección debe ser 1 para continuar o 2 para terminar, intente de nuevo: ")
         except ValueError:
